@@ -1,0 +1,7 @@
+<h1>店舗検索</h1>
+
+<%= form_with url: root_path, method: :get, local: true do |f| %>
+  <%= f.text_field :range, class: "range", placeholder: "値を入力してください" %>
+  <%= f.hidden_field :lat, :value => 'lat' %>
+  <%= f.hidden_field :lng, :value => 'lng' %>
+<% end %>
