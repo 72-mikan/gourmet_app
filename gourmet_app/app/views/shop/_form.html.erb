@@ -1,7 +1,10 @@
 <h1>店舗検索</h1>
 
 <%= form_with url: root_path, method: :get, local: true do |f| %>
-  <%= f.text_field :range, class: "range", placeholder: "値を入力してください" %>
+  <%= f.select :range, {'300m': 1, '500m': 2, '1000m': 3, '2000m': 4, '3000m': 5}, { include_blank: '検索範囲を選択してください'} %>
   <%= f.hidden_field :lat, :value => 'lat' %>
   <%= f.hidden_field :lng, :value => 'lng' %>
+  <%= f.submit '検索' %>
 <% end %>
+
+<%= javascript_pack_tag 'location' %>

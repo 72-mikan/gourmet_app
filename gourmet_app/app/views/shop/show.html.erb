@@ -1,0 +1,12 @@
+<%= render 'form' %>
+
+<h1>店舗詳細</h1>
+
+<h2>店舗名</h2>
+<%= @shop.xpath('name').text %>
+
+<h2>店舗住所</h2>
+<%= @shop.xpath('address').text %>
+
+<h2>営業時間</h2>
+<%= @shop.xpath('open') %>

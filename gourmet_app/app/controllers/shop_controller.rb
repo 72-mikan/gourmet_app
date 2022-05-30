@@ -29,8 +29,14 @@ class ShopController < ApplicationController
   end
 
   def show
-    data = URI.encode_www_form({lat: lat, lng: lng, range: range})
+    id = params[:id]
+    data = URI.encode_www_form({id: id})
     uri = URI.parse("http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=#{ ENV['GOURMET_SEARCH_API'] }&#{data}")
+    puts "test"
+    puts uri
+    doc = Nokogiri::HTML(open(uri),nil,"utf-8")
+    @shop = doc.xpath('//results//shop')
+    puts @contents
   end
 
 end
