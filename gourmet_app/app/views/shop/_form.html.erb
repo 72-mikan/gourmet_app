@@ -4,6 +4,7 @@
   <%= f.select :range, {'300m': 1, '500m': 2, '1000m': 3, '2000m': 4, '3000m': 5}, { include_blank: '検索範囲を選択してください'} %>
   <%= f.hidden_field :lat, :value => 'lat' %>
   <%= f.hidden_field :lng, :value => 'lng' %>
+  <%= f.hidden_field :flag, :value => false %>
   <%= f.submit '検索' %>
 <% end %>
 

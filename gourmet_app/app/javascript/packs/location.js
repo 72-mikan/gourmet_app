@@ -1,6 +1,10 @@
-// Geolocation APIに対応していない
-if (!navigator.geolocation) {
+// Geolocation APIに対応しているかどうかの処理
+let flag = document.getElementById('flag');
+if (navigator.geolocation) {
+  flag.value = true;
+} else {
   alert("この端末では位置情報が取得できません");
+  flag.value = false;
 }
 
 // 現在地を取得
