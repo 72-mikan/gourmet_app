@@ -6,41 +6,8 @@
     </div>
 
     <div class="col-md-8 offset-md-1">
-      <h1>店舗一覧</h1>
-
-      <% unless @contents.nil? %>
-        <table class="shop_list">
-          <thead>
-            <tr>
-              <th></th>
-              <th>店舗名</th>
-              <th>住所</th>
-            </tr>
-          </thead>
-          <% @contents.each do |shop| %>
-            <tbody>
-              <tr>
-                <td>
-                  <%= link_to shop_path(shop[:id]) do %>
-                    <img src="<%= shop[:logo_image] %>">
-                  <% end %>
-                </td>
-                <td>
-                  <%= link_to shop_path(shop[:id]) do %>
-                    <%= shop[:name] %>
-                  <% end %>
-                </td>
-                <td>
-                  <%= shop[:address] %>
-                </td>
-              </tr>
-            </tbody>
-          <% end %>
-        </table>
-        <%= paginate @contents %>
-      <% else %>
-        <%= @info %> 
-      <% end %>
+      <%= render 'list', contents: @contents, info: @info %>
     </div>
+
   </div>
 </div>
