@@ -11,6 +11,7 @@ if (navigator.geolocation) {
 navigator.geolocation.getCurrentPosition(
   // 取得成功した場合
   function(position) {
+    //緯度、経度の取得
       let lat = document.getElementById('lat');
       lat.value = position.coords.latitude;
       let lng = document.getElementById('lng');
