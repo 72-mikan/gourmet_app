@@ -8,6 +8,22 @@
     <div class="col-md-8 offset-md-1">
       <h1>店舗詳細</h1>
 
+      <% if user_signed_in? %>
+        <% if current_user.favorited_by?(current_user, @shop.xpath('id').text) %>
+          <p>
+            <%= link_to shop_favorites_path(@shop.xpath('id').text), method: :delete do %>
+              ★
+            <% end %>
+          </p>
+        <% else %>
+          <p>
+            <%= link_to shop_favorites_path(@shop.xpath('id').text), method: :post do %>
+              ☆
+            <% end %>
+          </p>
+        <% end %>
+      <% end %>
+
       <h2>店舗名</h2>
       <%= @shop.xpath('name').text %>
       
