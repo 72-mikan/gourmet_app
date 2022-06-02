@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-3">
+      <h2>アカウント情報</h2>
+
+      <%= image_tag @user.get_profile_image(100, 100) %>
+      <table>
+        <tbody class="user_info">
+          <tr></tr>
+          <tr>
+            <th>name</th>
+            <th><%= @user.name %></th>
+          </tr>
+          <tr>
+            <th>introduction</th>
+            <th><%= @user.introduction %></th>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+      <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
+        <i class="fas fa-user-cog"></i>
+      <% end %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <h2>お気に入り店舗</h2>
+      <%= render '/shop/list', contents: @contents, info: @info %>
+    </div>
+
+  </div>
+</div>

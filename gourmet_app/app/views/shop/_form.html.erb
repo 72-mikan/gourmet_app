@@ -3,13 +3,18 @@
 <%= form_with url: root_path, method: :get, local: true do |f| %>
   <label>検索範囲</label>
   <%= f.select :range, {'300m': 1, '500m': 2, '1000m': 3, '2000m': 4, '3000m': 5}, { include_blank: '検索範囲を選択してください'} %>
-  <label>キーワード</label>
-  <%= f.text_field :key_word %>
   <%= f.hidden_field :lat, :value => 'lat' %>
   <%= f.hidden_field :lng, :value => 'lng' %>
   <%= f.hidden_field :flag, :value => false %>
   </br>
-  <%= f.submit '検索' %>
+  <%= f.submit '検索', class: "btn btn-success" %>
+<% end %>
+
+<%= form_with url: root_path, method: :get, local: true do |f| %>
+  <label>キーワード</label>
+  <%= f.text_field :key_word %>
+  </br>
+  <%= f.submit '検索', class: "btn btn-success" %>
 <% end %>
 
 <%= javascript_pack_tag 'location' %>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>GourmetApp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,26 +10,65 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header>
-    <h1>Restaurant Search</h1>
-    <li>
-      <%= link_to "一覧ページ", root_path %>
-    </li>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-    <% end %>
-  </header>
-
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <%= link_to root_path, class:"navbar-brand p-3" do %>
+            <span>Restaurant Search</span>
+          <% end %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <li>
+                <%= link_to  root_path do %>
+                  <i class="fas fa-home"></i>
+                  Home
+                <% end %>
+              </li>
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to user_path(current_user) do %>
+                    <i class="fas fa-user"></i>
+                    User
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                    <i class="fas fa-sign-out-alt"></i>
+                    Log out
+                  <% end %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to new_user_registration_path do %>
+                    <i class="fas fa-user-plus"></i>
+                    Sign up
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_session_path do %>
+                    <i class="fas fa-sign-in-alt"></i>
+                    Log in
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <%= notice %>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <p class="copy_right">©2022 natsumican</p>
+    </footer>
+
   </body>
 </html>

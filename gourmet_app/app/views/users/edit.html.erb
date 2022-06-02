@@ -1,0 +1,34 @@
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>error
+  <% @user.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <hr>
+      <h2>アカウント編集</h2>
+      <hr>
+
+      <%= form_with model: @user do |f| %>
+        <label>name</label><br>
+        <%= f.text_field :name %><br>
+
+        <label>image</label><br>
+        <%= f.file_field :profile_image, accept: "image/*" %><br>
+
+        <label>introduction</label><br>
+        <%= f.text_area :introduction %><br>
+
+        <%= f.submit "Update User", class: "btn btn-success" %>
+      <% end %>
+
+      <hr>
+      <h2>アカウント削除</h2>
+      <hr>
+      <%= link_to "Delete", user_registration_path, class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+    </div>
+  </div>
+</div>

@@ -17,6 +17,14 @@ class ShopController < ApplicationController
         # index_shopメソッドから配列データの取得
         array = index_shop(uri)
         @contents = Kaminari.paginate_array(array).page(params[:page]).per(5)
+
+      elsif key_word = params[:key_word]
+        data = URI.encode_www_form({keyword: key_word})
+        uri = URI.parse("http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=#{ ENV['GOURMET_SEARCH_API'] }&#{data}")
+        puts uri
+        # index_shopメソッドから配列データの取得
+        array = index_shop(uri)
+        @contents = Kaminari.paginate_array(array).page(params[:page]).per(5)
       end
     end
     @info = "取得できるデータがありません。"
@@ -26,7 +34,6 @@ class ShopController < ApplicationController
     id = params[:id]
     data = URI.encode_www_form({id: id})
     uri = URI.parse("http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=#{ ENV['GOURMET_SEARCH_API'] }&#{data}")
-    puts uri
     doc = Nokogiri::HTML(open(uri),nil,"utf-8")
     @shop = doc.xpath('//results//shop')
   end

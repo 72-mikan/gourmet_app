@@ -13,6 +13,22 @@
  *= require_self
  */
 
+ footer {
+   height: 10px;
+   width: 100%;
+   background-color: white;
+   margin:0 auto;
+ }
+
+ .copy_right {
+   color: black;
+ }
+
+ li {
+   padding-right: 7px;
+   color: white;
+ }
+
  .shop_list {
   border-spacing: 0;
 }
@@ -31,4 +47,20 @@
   padding-right: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.user_info tr {
+  border-bottom:1px #eee solid;
+}
+
+.user_info th {
+  padding: 10px
+}
+
+.container {
+  width: 90%;
+}
+
+.favorite_icon {
+  color: #FFD700;
 }
