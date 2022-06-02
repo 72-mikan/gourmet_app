@@ -26,12 +26,34 @@
 
       <h2>店舗名</h2>
       <%= @shop.xpath('name').text %>
+
+      <h2>店舗画像</h2>
+      <img src="<%= @shop.xpath('//photo/pc/l').text %>">
       
       <h2>店舗住所</h2>
       <%= @shop.xpath('address').text %>
       
       <h2>営業時間</h2>
       <%= @shop.xpath('open').text %>
+
+      <h2>map</h2>
+      <div id='map'></div>
     </div>
   </div>
 </div>
+
+<style>
+#map{
+  height: 400px;
+}
+</style>
+
+<script>
+function initMap(){
+  let map = new google.maps.Map(document.getElementById('map'), {
+  center: {lat: <%= @lat %>, lng: <%= @lng %>},
+  zoom: 15
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>
