@@ -33,7 +33,6 @@ windows11
 bundle install
 rails db:migrate
 rails webpacker:install
-gem install nokogiri
 
 gemfileと同じ階層に.envファイルを用意し以下のAPIkeyを追加
 GOURMET_SEARCH_API = 'ホットペッパーのAPI'
